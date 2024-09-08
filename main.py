@@ -18,8 +18,8 @@ systems = {
 
 @app.get("/status")
 def status():
-    app.current_system = random.choice(list(systems.values()))
-    return app.current_system
+    app.current_system = random.choice(list(systems.items()))
+    return app.current_system[0]
 
 
 @app.get("/repair-bay", response_class=HTMLResponse)
@@ -31,7 +31,7 @@ def repair_bay():
         <title>Repair</title>
     </head>
     <body>
-    <div class="anchor-point">{app.current_system}</div>
+    <div class="anchor-point">{app.current_system[1]}</div>
     </body>
     </html>
     """
